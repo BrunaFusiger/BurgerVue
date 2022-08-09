@@ -1,5 +1,6 @@
 <template>
     <div id="burger-table" v-if="burgers">
+     <Message :msg="msg" v-show="msg" />
         <div>
             <div id="burger-table-heading">
                 <div class="order-id">#:</div>
@@ -22,7 +23,7 @@
                     </ul>
                 </div>
                 <div>
-                    <select name="status" class="status">
+                    <select name="status" class="status" @change="updateBurger($event, burger.id)">
                         <option value="selecione">Selecione</option>
                         <option :value="s.tipo" v-for="s in status" :key="s.id" :selected="burger.status == s.tipo">
                             {{ s.tipo }}
@@ -40,13 +41,19 @@
 </template>
 
 <script>
+import Message from "./Message.vue";
+
 export default {
     name: "Dashboard",
+     components: {
+        Message
+    },
     data() {
         return {
             burgers: null,
             burger_id: null,
-            status: []
+            status: [],
+            msg: null
         }
     },
     methods: {
@@ -69,6 +76,36 @@ export default {
             });
             const res = await req.json()
             this.getPedidos()
+
+            //mensagem de sistema
+            this.msg = "pedido removido com sucesso";
+
+            //limpar mensagem
+            setTimeout(() => this.msg = "", 3000)
+        },
+        async updateBurger(event, id) {
+            const option = event.target.value;
+
+            //atualiza status no banco
+            const dataJason = JSON.stringify({ status: option });
+
+            const req = await fetch(`http://localhost:3000/burgers/${id}`, {
+                method: 'PATCH', //atualiza só o que muda
+                headers: { "Content-Type": "application/json" },
+                body: dataJason
+            });
+
+            const res = await req.json();
+
+                 //mensagem de sistema
+            this.msg = `O pedido N ${res.id} foi atualizado para "${res.status}"!`;
+
+            //limpar mensagem
+            setTimeout(() => this.msg = "", 3500)
+
+            console.log(res);
+
+
         }
     },
     mounted() {

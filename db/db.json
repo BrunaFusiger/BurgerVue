@@ -79,14 +79,13 @@
   ],
   "burgers": [
     {
-      "nome": "Bruna Manuela Fusiger da Luz",
-      "carne": "Veggie burger",
-      "pao": "Parmesão e Orégano",
+      "nome": "Angelo",
+      "carne": "Maminha",
+      "pao": "Integral",
       "opcionais": [
-        "Pepino",
-        "Tomate"
+        "Salame"
       ],
-      "status": "Solicitado",
+      "status": "Finalizado",
       "id": 1
     }
   ]
