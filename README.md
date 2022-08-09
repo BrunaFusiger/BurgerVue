@@ -1,19 +1,19 @@
-# burgervue
+#BurgerVue
+Meu primeiro projeto criado com o framework Vue.js
 
-## Project setup
-```
-npm install
-```
+##Tecnologias:
+- Vue.js
+- "Fake" API
+- HTML e CSS
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+![burgerVue](https://user-images.githubusercontent.com/90523641/183659293-4b47ee82-7d05-4dd7-862b-9a0fc25cdab9.png)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+##Funcionalidades para cliente: (HOME)
+1. Formulário integrado com uma suposta API criada por mim onde o usuário pode escolher o seus ingredientes
+2. Ao clicar em "criar meu burger" uma mensagem de "Pedido número ${posição vária conforme lista} realizado com sucesso!" aparece por 3s na tela
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+##Funcionalidades para restaurante: (PEDIDOS)
+1. O hamburger e seus ingredientes são enviados para a API e para o Dashboard da página pedidos
+2. Nessa página o restaurante pode:
+    - Escolher o status do pedido (solicitado, em produção ou finalizado) e uma notificação aparece na tela ao status ser atualizado
+    - Excluir pedidos -> uma notificação aparece na tela quando um pedido é excluido 
